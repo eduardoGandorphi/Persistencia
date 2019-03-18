@@ -1,0 +1,7 @@
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\bin\Debug\Persistencia.exe.config
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\bin\Debug\Persistencia.exe
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\bin\Debug\Persistencia.pdb
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\obj\Debug\Persistencia.csprojAssemblyReference.cache
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\obj\Debug\Persistencia.exe
+C:\Users\Eduardo Gandorphi\Documents\GitHub\Persistencia\Persistencia\obj\Debug\Persistencia.pdb
