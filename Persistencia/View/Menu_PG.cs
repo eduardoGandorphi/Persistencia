@@ -8,7 +8,7 @@ namespace Persistencia.View
 {
     public class Menu_PG
     {
-        public static void Abrir()
+        public void Abrir()
         {
             bool continuar = true;
 
