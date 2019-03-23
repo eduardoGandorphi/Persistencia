@@ -19,5 +19,11 @@ namespace ConsoleSqlite.Model
 
         [NotNull]
         public int PessoaId { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"[{ProfessorId}] [{PessoaId}] {Salario}";
+        }
     }
 }

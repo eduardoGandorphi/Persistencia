@@ -14,7 +14,8 @@ namespace Persistencia
         {
             Conexao.CriaBanco();
 
-            (new Menu_PG()).Abrir();
+            var menu = new Menu_PG();
+            menu.Abrir();
         }
     }
 }

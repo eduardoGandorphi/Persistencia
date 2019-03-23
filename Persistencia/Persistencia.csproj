@@ -43,13 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Pessoa_BL.cs" />
+    <Compile Include="Business\Professor_BL.cs" />
     <Compile Include="DataAccess\Conexao.cs" />
     <Compile Include="DataAccess\Pessoa_DA.cs" />
+    <Compile Include="DataAccess\Professor_DA.cs" />
     <Compile Include="Model\Aluno_MD.cs" />
     <Compile Include="Model\Pessoa_MD.cs" />
     <Compile Include="Model\Professor_MD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Professor_PG.cs" />
     <Compile Include="View\Menu_PG.cs" />
     <Compile Include="View\Pessoa_PG.cs" />
   </ItemGroup>

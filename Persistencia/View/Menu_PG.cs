@@ -23,7 +23,10 @@ namespace Persistencia.View
                     continuar = false;
 
                 else if (input == 1)
-                    (new Pessoa_PG()).Abrir();
+                {
+                    var pessoa_pg = new Pessoa_PG();
+                    pessoa_pg.Abrir();
+                }
             }
         }
     }

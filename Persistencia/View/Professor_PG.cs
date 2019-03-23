@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Persistencia.View
 {
-    public class Pessoa_PG
+    public class Professor_PG
     {
 
-        Pessoa_BL bl = new Pessoa_BL();
+        Professor_BL bl = new Professor_BL();
         public void Abrir()
         {
             bool continuar = true;
@@ -19,11 +19,11 @@ namespace Persistencia.View
             while (continuar)
             {
                 Console.Clear();
-                Console.WriteLine("================================= Pessoas =================================");                
-                Console.WriteLine("\tId\tNascimento\tNome");
+                Console.WriteLine("================================= Professores =================================");
+                Console.WriteLine("\tId\tidPessoa\tSalario");
                 
                 foreach (var item in bl.List())
-                    Console.WriteLine("\t" + item);
+                    Console.WriteLine("\t"+item);
 
                 Console.WriteLine("");
                 Console.WriteLine("");
@@ -32,10 +32,10 @@ namespace Persistencia.View
                 var input = int.Parse(Console.ReadLine());
 
 
-                
+
                 if (input == 0)
                     continuar = false;
-                
+
                 else
                     Detalhe(input);
             }
@@ -71,44 +71,35 @@ namespace Persistencia.View
 
         public void Create()
         {
-            Console.WriteLine("============ Create Pessoa ============");
+            Console.WriteLine("============ Create Professor ============");
 
-            Console.WriteLine("Informe o nome:");
-            var nomeEntrada = Console.ReadLine();
+            Console.WriteLine("Informe o id da pessoa que sera usado para o professor:");
+            var pessoaIdEntrada = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe o telefone:");
-            var telefoneEntrada = int.Parse(Console.ReadLine());
+            Console.WriteLine("Informe o novo salario:");
+            var salarioEntrada = decimal.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe o dia de nascimento:");
-            var diaEntrada = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe o mes de nascimento:");
-            var mesEntrada = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Informe o ano de nascimento:");
-            var anoEntrada = int.Parse(Console.ReadLine());
-
-            var md = new Pessoa_MD()
+            var md = new Professor_MD()
             {
-                Nome = nomeEntrada,
-                Telefone = telefoneEntrada,
-                DataNacimento = new DateTime(anoEntrada, mesEntrada, diaEntrada)
+                PessoaId = pessoaIdEntrada,
+                Salario = salarioEntrada,
             };
-
+            
             bl.Create(md);
         }
 
         public void Read()
         {
-            Console.WriteLine("============ Read Pessoa ============");
+            Console.WriteLine("============ Read Professor ============");
 
             Console.WriteLine("Informe id:");
             var idEntrada = int.Parse(Console.ReadLine());
 
             Console.WriteLine("");
             Console.WriteLine("Registro " + idEntrada);
-            var md = bl.Read(idEntrada);
-            Console.WriteLine(md);
+            var mdLido = bl.Read(idEntrada);
+            Console.WriteLine(mdLido);
 
             Console.WriteLine("");
             Console.WriteLine("");
@@ -120,7 +111,7 @@ namespace Persistencia.View
 
         public void Update()
         {
-            Console.WriteLine("============ Update Pessoa ============");
+            Console.WriteLine("============ Update Professor ============");
 
             Console.WriteLine("Informe id:");
             var idEntrada = int.Parse(Console.ReadLine());
@@ -130,39 +121,31 @@ namespace Persistencia.View
             var mdLido = bl.Read(idEntrada);
             Console.WriteLine(mdLido);
 
-            Console.WriteLine("Informe o novo nome:");
-            var nomeEntrada = Console.ReadLine();
 
-            Console.WriteLine("Informe o novo telefone:");
-            var telefoneEntrada = int.Parse(Console.ReadLine());
+            Console.WriteLine("Informe o id da pessoa que sera usado para o professor:");
+            var pessoaIdEntrada = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe o novo dia de nascimento:");
-            var diaEntrada = int.Parse(Console.ReadLine());
+            Console.WriteLine("Informe o novo salario:");
+            var salarioEntrada = decimal.Parse(Console.ReadLine());
+            
 
-            Console.WriteLine("Informe o novo mes de nascimento:");
-            var mesEntrada = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Informe o novo ano de nascimento:");
-            var anoEntrada = int.Parse(Console.ReadLine());
-
-            var md = new Pessoa_MD()
+            var md = new Professor_MD()
             {
-                PessoaId = idEntrada,
-                Nome = nomeEntrada,
-                Telefone = telefoneEntrada,
-                DataNacimento = new DateTime(anoEntrada, mesEntrada, diaEntrada)
+                ProfessorId = idEntrada,
+                PessoaId = pessoaIdEntrada,
+                Salario = salarioEntrada,                
             };
             bl.Update(md);
         }
 
         public void Delete()
         {
-            Console.WriteLine("============ Delete Pessoa ============");
+            Console.WriteLine("============ Delete Professor ============");
 
             Console.WriteLine("Informe id:");
             var idEntrada = int.Parse(Console.ReadLine());
-            
-            bl.Delete(new Pessoa_MD { PessoaId = idEntrada});
+
+            bl.Delete(new Professor_MD { ProfessorId = idEntrada });
         }
 
     }
