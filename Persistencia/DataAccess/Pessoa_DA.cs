@@ -38,11 +38,11 @@ namespace Persistencia.DataAccess
             db.Close();
         }
 
-        public void Delete(int id)
+        public void Delete(Pessoa_MD md)
         {
             var db = Conexao.GetConn();
             db.BeginTransaction();
-            db.Delete(id);
+            db.Delete(md);
             db.Commit();
             db.Close();
         }

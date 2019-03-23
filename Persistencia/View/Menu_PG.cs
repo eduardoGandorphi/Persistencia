@@ -16,14 +16,14 @@ namespace Persistencia.View
             {
                 Console.Clear();
                 Console.WriteLine("================================= Menu =================================");
-                Console.WriteLine("[1] Pessoas    [2] Professores    [3] Aluno    [0] Sair");
+                Console.WriteLine("Opções: [1] Pessoas    [2] Professores    [3] Aluno    [0] Sair");
                 var input = int.Parse(Console.ReadLine());
 
                 if (input == 0)
                     continuar = false;
 
                 else if (input == 1)
-                    Pessoa_PG.Abrir();
+                    (new Pessoa_PG()).Abrir();
             }
         }
     }

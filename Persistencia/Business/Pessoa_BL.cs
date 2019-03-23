@@ -34,11 +34,10 @@ namespace Persistencia.Business
             da.Update(md);
         }
 
-        public void Delete(int id)
+        public void Delete(Pessoa_MD md)
         {
-            if (id == 0)
-                throw new Exception("O id não pode ser 0.");
-            da.Delete(id);
+            ValidarIdentificacao(md);
+            da.Delete(md);
         }
 
         public List<Pessoa_MD> List()

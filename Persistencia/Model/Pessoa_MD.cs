@@ -23,7 +23,7 @@ namespace ConsoleSqlite.Model
 
         public override string ToString()
         {
-            return $"[{PessoaId}]\t{DataNacimento.ToString("dd/MM/yyyy")}\t{Nome}";
+            return $"\t[{PessoaId}]\t{DataNacimento.ToString("dd/MM/yyyy")}\t{Nome}";
         }
     }
 }
