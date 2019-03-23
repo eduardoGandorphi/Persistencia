@@ -20,5 +20,10 @@ namespace ConsoleSqlite.Model
 
         [NotNull]
         public DateTime DataNacimento{ get; set; }
+
+        public override string ToString()
+        {
+            return $"[{PessoaId}]\t{DataNacimento.ToString("dd/MM/yyyy")}\t{Nome}";
+        }
     }
 }
