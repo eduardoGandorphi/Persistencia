@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleSqlite.Model
 {
-    public class Aluno
+    public class Aluno_MD
     {
         [PrimaryKey, AutoIncrement, NotNull]
         public int AlunoId { get; set; }

@@ -1,4 +1,5 @@
 using ConsoleSqlite.DataAccess;
+using Persistencia.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Persistencia
         static void Main(string[] args)
         {
             Conexao.CriaBanco();
+
+            Menu_PG.Abrir();
         }
     }
 }

@@ -11,20 +11,18 @@ namespace ConsoleSqlite.DataAccess
     public class Conexao
     {
         public static string dbPath = @"C:\Temp\tess.db";
-        public static void CriaBanco(bool storeDateTimeAsTicks = false, bool insertComModels = false, bool codeFirst = false)
+
+
+        public static SQLiteConnection GetConn(bool storeDateTimeAsTicks = false)
         {
-            var db = new SQLiteConnection(dbPath, storeDateTimeAsTicks: storeDateTimeAsTicks);
+            return new SQLiteConnection(dbPath, storeDateTimeAsTicks: storeDateTimeAsTicks);
+        }
+        public static void CriaBanco(bool storeDateTimeAsTicks = false)
+        {
+            var db = GetConn();
 
-            if (codeFirst)
-                CriaTabelasCodeFirst(db);
-            else
-                CriaTabelasDbFirst(db);
-
-
-            if (insertComModels)
-                popularComModels(db);
-            else
-                popularComExecute(db);
+            CriaTabelasCodeFirst(db);
+            popularComModels(db);
         }
 
 
@@ -40,32 +38,7 @@ namespace ConsoleSqlite.DataAccess
             db.CreateTable<Aluno>();
         }
 
-        private static void CriaTabelasDbFirst(SQLiteConnection db)
-        {
-            //CRIA TABELA DE PESSOA
-            db.Execute(@"CREATE TABLE 'Pessoa' (
-                            'PessoaId'  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-                            'Nome'  varchar NOT NULL,
-                            'Telefone'  integer NOT NULL,
-                            'DataNacimento' text NOT NULL
-                        );");
-
-            //CRIA TABELA DE PROFESSOR
-            db.Execute(@"CREATE TABLE 'Professor' (
-                            'ProfessorId'   integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-                            'Salario'   float NOT NULL,
-                            'PessoaId'  integer NOT NULL
-                        ); ");
-
-            //CRIA TABELA DE ALUNO
-            db.Execute(@"CREATE TABLE 'Aluno' (
-                            'AlunoId'   integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-                            'Mensalidade'   float NOT NULL,
-                            'PessoaId'  integer NOT NULL
-                        ); ");
-        }
-
-
+        
 
 
         //INSERTS
@@ -89,18 +62,54 @@ namespace ConsoleSqlite.DataAccess
             db.Close();
         }
 
-        //INSERTSS
-        private static void popularComExecute(SQLiteConnection db)
-        {
-            db.BeginTransaction();
-            //CRIA TABELA DE ALUNO
-            db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Eduardo','1991-03-13T00:00:00.000','981234567');");
-            db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Diogo','1991-03-13T00:00:00.000','981234568'); ");
-            db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Jefferson','1991-03-13T00:00:00.000','981234569');");
-            db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Leandro','1991-03-13T00:00:00.000','981234569');");
 
-            db.Commit();
-            db.Close();
-        }
+
+
+
+
+
+
+
+
+
+        ////OPCIONAL, use OU o popularComModels OU CriaTabelasDbFirst
+        //private static void CriaTabelasDbFirst(SQLiteConnection db)
+        //{
+        //    //CRIA TABELA DE PESSOA
+        //    db.Execute(@"CREATE TABLE 'Pessoa' (
+        //                    'PessoaId'  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+        //                    'Nome'  varchar NOT NULL,
+        //                    'Telefone'  integer NOT NULL,
+        //                    'DataNacimento' text NOT NULL
+        //                );");
+
+        //    //CRIA TABELA DE PROFESSOR
+        //    db.Execute(@"CREATE TABLE 'Professor' (
+        //                    'ProfessorId'   integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+        //                    'Salario'   float NOT NULL,
+        //                    'PessoaId'  integer NOT NULL
+        //                ); ");
+
+        //    //CRIA TABELA DE ALUNO
+        //    db.Execute(@"CREATE TABLE 'Aluno' (
+        //                    'AlunoId'   integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+        //                    'Mensalidade'   float NOT NULL,
+        //                    'PessoaId'  integer NOT NULL
+        //                ); ");
+        //}
+
+        ////INSERTS com Comandos, OPCIONAL, use OU o popularComModels OU popularComExecute
+        //private static void popularComExecute(SQLiteConnection db)
+        //{
+        //    db.BeginTransaction();
+        //    //CRIA TABELA DE ALUNO
+        //    db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Eduardo','1991-03-13T00:00:00.000','981234567');");
+        //    db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Diogo','1991-03-13T00:00:00.000','981234568'); ");
+        //    db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Jefferson','1991-03-13T00:00:00.000','981234569');");
+        //    db.Execute(@"INSERT INTO 'Pessoa'('Nome','DataNacimento','Telefone') VALUES('Leandro','1991-03-13T00:00:00.000','981234569');");
+
+        //    db.Commit();
+        //    db.Close();
+        //}
     }
 }
