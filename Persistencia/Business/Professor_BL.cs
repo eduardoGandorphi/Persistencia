@@ -50,7 +50,7 @@ namespace Persistencia.Business
             if (md == null)
                 throw new Exception("O md não pode ser nulo.");
 
-            if (md.PessoaId == 0)
+            if (md.ProfessorId == 0)
                 throw new Exception("O md não pode ter o id 0.");
         }
 
