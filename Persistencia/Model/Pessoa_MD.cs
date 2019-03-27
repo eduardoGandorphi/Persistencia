@@ -9,6 +9,7 @@ namespace ConsoleSqlite.Model
 {
     public class Pessoa_MD
     {
+        //propriedade guarda a informação de Id
         [PrimaryKey,AutoIncrement,NotNull]        
         public int PessoaId { get; set; }
 
@@ -21,9 +22,13 @@ namespace ConsoleSqlite.Model
         [NotNull]
         public DateTime DataNacimento{ get; set; }
 
+
+        //Alteração da função padrão do ToString()
+        //retorno exemplo: [3]  13/03/1991  Eduardo Freitas
         public override string ToString()
         {
             return $"[{PessoaId}]\t{DataNacimento.ToString("dd/MM/yyyy")}\t{Nome}";
         }
     }
 }
+//

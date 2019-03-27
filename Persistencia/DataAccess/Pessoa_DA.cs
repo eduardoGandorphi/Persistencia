@@ -52,13 +52,17 @@ namespace Persistencia.DataAccess
         }
 
         //tras a lista de possoas todas
-        public List<Pessoa_MD> List(Func<Pessoa_MD,bool> where =  null)
+        public List<Pessoa_MD> List(Func<Pessoa_MD, bool> where = null)
         {
             var db = Conexao.GetConn();
-            
-            return db.Table<Pessoa_MD>()
-                .Where(where)
-                .ToList();
+
+            if (where != null)
+                return db.Table<Pessoa_MD>()
+                    .Where(where)
+                    .ToList();
+            else
+                return db.Table<Pessoa_MD>()
+                    .ToList();
         }
     }
 }
