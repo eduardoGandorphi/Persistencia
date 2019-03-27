@@ -56,17 +56,11 @@ namespace Persistencia.Business
 
         public void ValidarDados(Professor_MD md)
         {
-            if (md.Nome == null)
-                throw new Exception("O nome não pode ser nulo");
+            if (md.Salario <= 900)
+                throw new Exception("O salario não pode ser menor que 900.");
 
-            if (md.Telefone < 1000000)
-                throw new Exception("O numero muito pequeno.");
-
-            if (md.DataNacimento == null)
-                throw new Exception("O nascimento não pode ser vazio.");
-
-            if (md.DataNacimento < new DateTime(1900, 01, 01))
-                throw new Exception("O nascimento não pode ser tão pequeno.");
+            if (md.PessoaId == null || md.PessoaId == 0)
+                throw new Exception("O id da pessoa precisa ser informado.");
         }
 
     }
