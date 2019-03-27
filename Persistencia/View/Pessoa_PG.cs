@@ -1,5 +1,6 @@
 ﻿using ConsoleSqlite.Model;
 using Persistencia.Business;
+using Persistencia.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,34 +9,48 @@ using System.Threading.Tasks;
 
 namespace Persistencia.View
 {
+    //ATENÇÃO: Classe que simula o comportamento de uma tela.
     public class Pessoa_PG
     {
 
         Pessoa_BL bl = new Pessoa_BL();
+
+        //metodo que sera chamado quando a 'tela' for abrir, ele quem desenha a tela.
         public void Abrir()
         {
             bool continuar = true;
 
+            //loop para conseguir executar varias funções.
             while (continuar)
             {
+                //limpa a tela
                 Console.Clear();
+
+                //escreve o cabeçalho
                 Console.WriteLine("================================= Pessoas =================================");                
                 Console.WriteLine("\tId\tNascimento\tNome");
-                
-                foreach (var item in bl.List())
-                    Console.WriteLine("\t" + item);
+
+                //Busca lista de pessoas no banco
+                var listaPessoas = bl.List();
+
+                //loop em cada pessoa da lista
+                foreach (var pessoa in listaPessoas)
+                    Console.WriteLine("\t" + pessoa);// vai escrever o que esta dentro do ToString() da classe Pessoa_MD
 
                 Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("Opções:");
                 Console.WriteLine("\t[1] Create    [2]Read    [3] Update    [4] Delete    [0] Sair");
+
+                //Recebe input do usuario
                 var input = int.Parse(Console.ReadLine());
 
 
-                
+                // sai da tela caso o usuario inputou 0;
                 if (input == 0)
                     continuar = false;
                 
+                //verifica com função o usuario digitou
                 else
                     Detalhe(input);
             }
@@ -44,8 +59,10 @@ namespace Persistencia.View
 
         public void Detalhe(int opcao)
         {
+            //deixa o código em alerta para exceptions
             try
             {
+                //limpa a tela
                 Console.Clear();
 
                 if (opcao == 1)
@@ -60,11 +77,12 @@ namespace Persistencia.View
                 else if (opcao == 4)
                     Delete();
             }
-            catch (Exception E)
+            //vem pra ca caso alguma exception aconteça
+            catch (Exception erro)
             {
-                Console.WriteLine(E.Message);
+                Console.WriteLine(erro.Message);
                 Console.WriteLine("\n\n");
-                Console.WriteLine("Pressione qualquer tecla para continuar.");
+                Console.WriteLine(Values.PressioneQualquerTecla);
                 Console.ReadKey();
             }
         }
@@ -112,7 +130,7 @@ namespace Persistencia.View
 
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("pressione qualquer tecla para voltar.");
+            Console.WriteLine(Values.PressioneQualquerTecla);
             Console.ReadKey();
 
 

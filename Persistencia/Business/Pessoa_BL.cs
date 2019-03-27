@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Business
 {
+    //CAMADA DE NEGÓCIO, LÓGICA
     public class Pessoa_BL
     {
         public Pessoa_DA da = new Pessoa_DA();
 
 
+        //chama o acesso a dados que Insere os valores de md no banco
         public void Create(Pessoa_MD md)
         {
             ValidarDados(md);
             da.Create(md);
         }
 
+        //chama o acesso a dados que Obtem as informações da pessoa do id informado
         public Pessoa_MD Read(int id)
         {
             if (id == 0)
@@ -27,6 +30,7 @@ namespace Persistencia.Business
             return da.Read(id);
         }
 
+        //chama o acesso a dados que Atualiza as informações de uma pessoa baseado no id dentro do md
         public void Update(Pessoa_MD md)
         {
             ValidarIdentificacao(md);
@@ -34,17 +38,21 @@ namespace Persistencia.Business
             da.Update(md);
         }
 
+        //chama o acesso a dados que apaga as informações de uma passeoa baseado id do md
         public void Delete(Pessoa_MD md)
         {
             ValidarIdentificacao(md);
             da.Delete(md);
         }
 
+        //chama o acesso a dados que tras a lista de possoas todas
         public List<Pessoa_MD> List()
         {
             return da.List();
         }
 
+
+        //metodo de validação do id
         public void ValidarIdentificacao(Pessoa_MD md)
         {
             if(md == null)
@@ -54,6 +62,8 @@ namespace Persistencia.Business
                 throw new Exception("O md não pode ter o id 0.");
         }
 
+
+        //metodos de validação dos dados restantes
         public void ValidarDados(Pessoa_MD md)
         {
             if (md.Nome == null)

@@ -1,5 +1,6 @@
 ﻿using ConsoleSqlite.Model;
 using Persistencia.Business;
+using Persistencia.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,7 @@ namespace Persistencia.View
             {
                 Console.WriteLine(E.Message);
                 Console.WriteLine("\n\n");
-                Console.WriteLine("Pressione qualquer tecla para continuar.");
+                Console.WriteLine(Values.PressioneQualquerTecla);
                 Console.ReadKey();
             }
         }
@@ -103,7 +104,7 @@ namespace Persistencia.View
 
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("pressione qualquer tecla para voltar.");
+            Console.WriteLine(Values.PressioneQualquerTecla);
             Console.ReadKey();
 
 

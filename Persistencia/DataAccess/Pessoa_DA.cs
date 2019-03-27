@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DataAccess
 {
+    //CAMADA DE ACESSO A DADOS
     public class Pessoa_DA
     {
-
+        //Insere os valores de md no banco
         public void Create(Pessoa_MD md)
         {
             var db = Conexao.GetConn();
@@ -20,6 +21,7 @@ namespace Persistencia.DataAccess
             db.Close();
         }
 
+        //Obtem as informações da pessoa do id informado
         public Pessoa_MD Read(int id)
         {
             var db = Conexao.GetConn();
@@ -29,6 +31,7 @@ namespace Persistencia.DataAccess
                 .FirstOrDefault();
         }
 
+        //Atualiza as informações de uma pessoa baseado no id dentro do md
         public void Update(Pessoa_MD md)
         {
             var db = Conexao.GetConn();
@@ -38,6 +41,7 @@ namespace Persistencia.DataAccess
             db.Close();
         }
 
+        //apaga as informações de uma passeoa baseado id do md
         public void Delete(Pessoa_MD md)
         {
             var db = Conexao.GetConn();
@@ -47,11 +51,13 @@ namespace Persistencia.DataAccess
             db.Close();
         }
 
-        public List<Pessoa_MD> List()
+        //tras a lista de possoas todas
+        public List<Pessoa_MD> List(Func<Pessoa_MD,bool> where =  null)
         {
             var db = Conexao.GetConn();
-
+            
             return db.Table<Pessoa_MD>()
+                .Where(where)
                 .ToList();
         }
     }
