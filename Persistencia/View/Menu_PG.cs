@@ -27,6 +27,11 @@ namespace Persistencia.View
                     var pessoa_pg = new Pessoa_PG();
                     pessoa_pg.Abrir();
                 }
+                else if (input == 2)
+                {
+                    var professor_PG = new Professor_PG();
+                    professor_PG.Abrir();
+                }
             }
         }
     }
