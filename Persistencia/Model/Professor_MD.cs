@@ -23,7 +23,7 @@ namespace ConsoleSqlite.Model
 
         public override string ToString()
         {
-            return $"[{ProfessorId}] [{PessoaId}] {Salario}";
+            return $"[{ProfessorId}]\t[{PessoaId}]\t\t{Salario}";
         }
     }
 }

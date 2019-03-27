@@ -53,6 +53,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Values.cs" />
+    <Compile Include="View\Aluno_PG.cs" />
+    <Compile Include="View\Materia_PG.cs" />
     <Compile Include="View\Professor_PG.cs" />
     <Compile Include="View\Menu_PG.cs" />
     <Compile Include="View\Pessoa_PG.cs" />
