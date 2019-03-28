@@ -1,5 +1,6 @@
 ﻿using ConsoleSqlite.Model;
 using Persistencia.DataAccess;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,36 +14,36 @@ namespace Persistencia.Business
         Professor_DA da = new Professor_DA();
 
 
-        public void Create(Professor_MD md)
+        public void Create(Professor_MD md, SQLiteConnection db = null)
         {
             ValidarDados(md);
-            da.Create(md);
+            da.Create(md, db);
         }
 
-        public Professor_MD Read(int id)
+        public Professor_MD Read(int id, SQLiteConnection db = null)
         {
             if (id == 0)
                 throw new Exception("O id não pode ser 0.");
 
-            return da.Read(id);
+            return da.Read(id, db);
         }
 
-        public void Update(Professor_MD md)
+        public void Update(Professor_MD md, SQLiteConnection db = null)
         {
             ValidarIdentificacao(md);
             ValidarDados(md);
-            da.Update(md);
+            da.Update(md, db);
         }
 
-        public void Delete(Professor_MD md)
+        public void Delete(Professor_MD md, SQLiteConnection db = null)
         {
             ValidarIdentificacao(md);
-            da.Delete(md);
+            da.Delete(md, db);
         }
 
-        public List<Professor_MD> List()
+        public List<Professor_MD> List(SQLiteConnection db = null)
         {
-            return da.List();
+            return da.List(db: db);
         }
 
         public void ValidarIdentificacao(Professor_MD md)

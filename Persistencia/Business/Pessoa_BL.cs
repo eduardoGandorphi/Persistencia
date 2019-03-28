@@ -1,5 +1,6 @@
 ﻿using ConsoleSqlite.Model;
 using Persistencia.DataAccess;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,40 +16,40 @@ namespace Persistencia.Business
 
 
         //chama o acesso a dados que Insere os valores de md no banco
-        public void Create(Pessoa_MD md)
+        public void Create(Pessoa_MD md, SQLiteConnection db = null)
         {
             ValidarDados(md);
-            da.Create(md);
+            da.Create(md, db);
         }
 
         //chama o acesso a dados que Obtem as informações da pessoa do id informado
-        public Pessoa_MD Read(int id)
+        public Pessoa_MD Read(int id, SQLiteConnection db = null)
         {
             if (id == 0)
                 throw new Exception("O id não pode ser 0.");
 
-            return da.Read(id);
+            return da.Read(id, db);
         }
 
         //chama o acesso a dados que Atualiza as informações de uma pessoa baseado no id dentro do md
-        public void Update(Pessoa_MD md)
+        public void Update(Pessoa_MD md, SQLiteConnection db = null)
         {
             ValidarIdentificacao(md);
             ValidarDados(md);
-            da.Update(md);
+            da.Update(md, db);
         }
 
         //chama o acesso a dados que apaga as informações de uma passeoa baseado id do md
-        public void Delete(Pessoa_MD md)
+        public void Delete(Pessoa_MD md, SQLiteConnection db = null)
         {
             ValidarIdentificacao(md);
-            da.Delete(md);
+            da.Delete(md, db);
         }
 
         //chama o acesso a dados que tras a lista de possoas todas
-        public List<Pessoa_MD> List()
+        public List<Pessoa_MD> List(SQLiteConnection db = null)
         {
-            return da.List();
+            return da.List(db:db);
         }
 
 
