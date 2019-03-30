@@ -21,10 +21,10 @@ namespace Persistencia.View
             {
                 Console.Clear();
                 Console.WriteLine("================================= Professores =================================");
-                Console.WriteLine("\tId\tidPessoa\tSalario");
+                Console.WriteLine("\tId\tidPessoa\tSalario\tNome");
                 
-                foreach (var item in bl.List())
-                    Console.WriteLine("\t"+item);
+                foreach (Professor_MD item in bl.ListCompleto())
+                    Console.WriteLine("\t"+item.ToString());
 
                 Console.WriteLine("");
                 Console.WriteLine("");

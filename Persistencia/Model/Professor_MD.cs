@@ -20,10 +20,12 @@ namespace ConsoleSqlite.Model
         [NotNull]
         public int PessoaId { get; set; }
 
+        [SQLite.Ignore]
+        public string PessoaNome { get; set; }
 
         public override string ToString()
         {
-            return $"[{ProfessorId}]\t[{PessoaId}]\t\t{Salario}";
+            return $"[{ProfessorId}]\t[{PessoaId}]\t\t{Salario}\t{PessoaNome}";
         }
     }
 }
