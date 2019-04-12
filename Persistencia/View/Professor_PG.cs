@@ -20,7 +20,7 @@ namespace Persistencia.View
             while (continuar)
             {
                 Console.Clear();
-                Console.WriteLine("================================= Professores =================================");
+                Console.WriteLine("================================= Teacher =================================");
                 Console.WriteLine("\tId\tidPessoa\tSalario\tNome");
                 
                 foreach (Professor_MD item in bl.ListCompleto())
